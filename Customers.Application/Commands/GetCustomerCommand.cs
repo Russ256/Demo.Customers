@@ -4,15 +4,20 @@
     using Customers.Application.Interface;
     using Customers.Domain.Model;
     using DataRepositoryCore;
+    using Microsoft.Extensions.Logging;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Return a customer
+    /// </summary>
     public class GetCustomerCommand : Command<GetCustomerRequest, GetCustomerResponse>
     {
         private readonly IReadDataRepository<Customer, Guid> repository;
 
-        public GetCustomerCommand(IReadDataRepository<Customer, Guid> repository)
+        public GetCustomerCommand(ILogger<GetCustomerCommand> logger, IReadDataRepository<Customer, Guid> repository)
+            : base(logger)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }

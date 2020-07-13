@@ -9,18 +9,18 @@
     using System.Net;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Customer controller
+    /// </summary>
     [Route("api/v1.0/customer")]
     [ApiController]
     [Produces("application/json")]
     [Consumes("application/json")]
     public class CustomersController : ApiControllerBase
     {
-        private readonly IMapper mapper;
-
         public CustomersController(IMediator mediator, IMapper mapper)
-            : base(mediator)
+            : base(mediator, mapper)
         {
-            this.mapper = mapper;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         {
             return await this.ExecuteCommandAsync(new GetCustomerRequest() { Id = id }, (GetCustomerResponse response) =>
             {
-                return this.mapper.Map<Dto.CustomerDto>(response.Customer);
+                return this.Mapper.Map<Dto.CustomerDto>(response.Customer);
             });
         }
 
@@ -68,7 +68,7 @@
         {
             return await this.ExecuteCommandAsync(new UpdateCustomerRequest() { Id = id, Name = request.Name }, (UpdateCustomerResponse response) =>
             {
-                return this.mapper.Map<Dto.CustomerDto>(response.Customer);
+                return this.Mapper.Map<Dto.CustomerDto>(response.Customer);
             });
         }
 
@@ -83,7 +83,7 @@
         {
             return await this.ExecuteCommandAsync(new CreateCustomerRequest() { Name = request.Name }, (CreateCustomerResponse response) =>
             {
-                return this.mapper.Map<Dto.CustomerDto>(response.Customer);
+                return this.Mapper.Map<Dto.CustomerDto>(response.Customer);
             });
         }
 
@@ -98,7 +98,7 @@
         {
             return await this.ExecuteCommandAsync(new QueryCustomerRequest() { Name = name }, (QueryCustomerResponse response) =>
             {
-                return this.mapper.Map<Dto.CustomerDto[]>(response.Customers);
+                return this.Mapper.Map<Dto.CustomerDto[]>(response.Customers);
             });
         }
     }

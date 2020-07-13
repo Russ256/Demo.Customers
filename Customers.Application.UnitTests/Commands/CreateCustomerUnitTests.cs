@@ -1,14 +1,14 @@
-using Customers.Application.Commands;
-using Customers.Application.Interface;
-using Customers.Domain.Model;
-using DataRepositoryCore;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Threading.Tasks;
-
 namespace Customers.Application.UnitTests
 {
+    using Customers.Application.Commands;
+    using Customers.Application.Interface;
+    using Customers.Domain.Model;
+    using DataRepositoryCore;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System;
+    using System.Threading.Tasks;
+
     [TestClass]
     public class CreateCustomerUnitTests
     {
@@ -20,7 +20,7 @@ namespace Customers.Application.UnitTests
             mockRepository.Setup(m => m.Add(It.IsAny<Customer>()));
             string name = "Unit Test";
             CreateCustomerRequest request = new CreateCustomerRequest() { Name = name };
-            CreateCustomerCommand sut = new CreateCustomerCommand(mockRepository.Object);
+            CreateCustomerCommand sut = new CreateCustomerCommand(MockHelpers.GetLogger<CreateCustomerCommand>(), mockRepository.Object);
 
             // Act
             CreateCustomerResponse result = await sut.Handle(request, default);

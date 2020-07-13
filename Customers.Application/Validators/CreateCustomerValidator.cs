@@ -4,7 +4,7 @@
     using FluentValidation;
 
     /// <summary>
-    /// Validator
+    /// Customer Validator
     /// </summary>
     public class CreateCustomerValidator : AbstractValidator<CreateCustomerRequest>
     {

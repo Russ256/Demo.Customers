@@ -21,7 +21,7 @@ namespace Customers.Application.UnitTests
             Customer customer = new Customer() { Id = id };
             mockRepository.Setup(m => m.FindAsync(id, default)).Returns(new ValueTask<Customer>(customer));
             DeleteCustomerRequest request = new DeleteCustomerRequest() { Id = id };
-            DeleteCustomerCommand sut = new DeleteCustomerCommand(mockRepository.Object);
+            DeleteCustomerCommand sut = new DeleteCustomerCommand(MockHelpers.GetLogger<DeleteCustomerCommand>(), mockRepository.Object);
 
             // Act
             DeleteCustomerResponse result = await sut.Handle(request, default);
@@ -41,7 +41,7 @@ namespace Customers.Application.UnitTests
             Guid id = new Guid("b7c2acaa-ad72-47b3-b858-26357cf14fbb");
             mockRepository.Setup(m => m.FindAsync(id, default)).Returns(new ValueTask<Customer>((Customer)null));
             DeleteCustomerRequest request = new DeleteCustomerRequest() { Id = id };
-            DeleteCustomerCommand sut = new DeleteCustomerCommand(mockRepository.Object);
+            DeleteCustomerCommand sut = new DeleteCustomerCommand(MockHelpers.GetLogger<DeleteCustomerCommand>(), mockRepository.Object);
 
             // Act
             await Assert.ThrowsExceptionAsync<NotFoundException>(async () => await sut.Handle(request, default));

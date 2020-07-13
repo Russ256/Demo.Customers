@@ -15,7 +15,7 @@
             // MedaitR
             services.AddMediatR(typeof(DependencyInjection).GetTypeInfo().Assembly);
 
-            // MedaitR request pipeline - In order of execution!
+            // MedaitR request pipeline - Remember to add in order of execution!
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkBehavior<,>));
 

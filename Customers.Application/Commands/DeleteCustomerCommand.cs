@@ -3,15 +3,20 @@
     using Customers.Application.Interface;
     using Customers.Domain.Model;
     using DataRepositoryCore;
+    using Microsoft.Extensions.Logging;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Deletes a customer
+    /// </summary>
     public class DeleteCustomerCommand : Command<DeleteCustomerRequest, DeleteCustomerResponse>
     {
         private readonly IDataRepository<Customer, Guid> repository;
 
-        public DeleteCustomerCommand(IDataRepository<Customer, Guid> repository)
+        public DeleteCustomerCommand(ILogger<DeleteCustomerCommand> logger, IDataRepository<Customer, Guid> repository)
+            : base(logger)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }

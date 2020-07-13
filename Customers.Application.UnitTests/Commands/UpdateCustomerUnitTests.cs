@@ -22,7 +22,7 @@ namespace Customers.Application.UnitTests
             mockRepository.Setup(m => m.FindAsync(id, default)).ReturnsAsync(customer);
             string name = "Unit Test";
             UpdateCustomerRequest request = new UpdateCustomerRequest() { Id = id, Name = name };
-            UpdateCustomerCommand sut = new UpdateCustomerCommand(mockRepository.Object);
+            UpdateCustomerCommand sut = new UpdateCustomerCommand(MockHelpers.GetLogger<UpdateCustomerCommand>(), mockRepository.Object);
 
             // Act
             UpdateCustomerResponse result = await sut.Handle(request, default);
@@ -44,7 +44,7 @@ namespace Customers.Application.UnitTests
             Guid id = new Guid("b7c2acaa-ad72-47b3-b858-26357cf14fbb");
             mockRepository.Setup(m => m.FindAsync(id, default)).Returns(new ValueTask<Customer>((Customer)null));
             UpdateCustomerRequest request = new UpdateCustomerRequest() { Id = id };
-            UpdateCustomerCommand sut = new UpdateCustomerCommand(mockRepository.Object);
+            UpdateCustomerCommand sut = new UpdateCustomerCommand(MockHelpers.GetLogger<UpdateCustomerCommand>(), mockRepository.Object);
 
             // Act
             await Assert.ThrowsExceptionAsync<NotFoundException>(async () => await sut.Handle(request, default));
