@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Customers]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL, 
+    [Name] NVARCHAR(50) NOT NULL,
+
+	CONSTRAINT PK_Customers PRIMARY KEY (ID)
+)
