@@ -25,18 +25,22 @@ Application is separated into three areas:
 1.  Infrastructure - Peristence layer 
 1.  Hosts - For hosting the Application layer, a .Net Core api website
 
-# Application Layor
+## Application Layor
 1.  App business logic is implemented in the application layor
 1.  All calls to application logic are made through MediatR calls 
 1.  CQRS architecture applied, Entity framework used for handling domain updates and Dapper for domain queries
 
-# Host Api
+## Host Api
 1.  The application is hosted in a .Net Core api project.
 1.  Calls to application logic are made through MediatR requests.
 1.  AutoMapper is used to map repsonses from the application calls to publid Dto's exposed by the api.
 1.  Swagger is implemented to create an api site
 
-# Infrastructure 
+## Infrastructure 
 1.  Sql database project 
 1.  DataRepositoryCore used for implementing generic data repository parttern in Entity Framework
 1.  Simple Unit Of Work implementation
+
+
+# Additional Notes
+1.  Unit testing project included using Moq for dependency mocking.
