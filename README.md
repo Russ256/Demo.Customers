@@ -18,6 +18,7 @@ This is a simple project to demostrate a modern scaleable web api design impleme
 1.  Mediator pattern used to decouple the public interface from the application implementation.
 1.  Dependency Injection/IOC patterns used for all application objects.
 1.  Validator classes used for request validation.
+1.  SOLID principles applied.
 
 # Design
 Application is separated into three areas:
