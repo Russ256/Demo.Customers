@@ -1,5 +1,5 @@
 # Demo.Customers
-This is a simple project to demostrate a modern scaleable web api design implemented in .Net Core using standard patterns and practices.
+This is a simple CRUD project to demostrate a modern scaleable web api design implemented in .Net Core using standard patterns and practices.
 
 # Technologies used
 1.  .Net Core 3.1.
