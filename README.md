@@ -6,6 +6,7 @@ The solution is set up to run against an sql database in the local default insta
 
 # Technologies used
 1.  .Net Core 3.1.
+1.  MS Sql Server
 1.  Entitity Framework - For business logic domain model.
 1.  Dapper - For query requests.
 1.  DataRepositoryCore - For Entity Frmaework data repositories.
