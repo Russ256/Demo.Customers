@@ -1,6 +1,9 @@
 # Demo.Customers
 This is a simple CRUD project to demostrate a modern scaleable web api design implemented in .Net Core using standard patterns and practices.
 
+The solution is set up to run against an sql database in the local default instance of sql server.  Just publish the database project first and the api should run.
+
+
 # Technologies used
 1.  .Net Core 3.1.
 1.  Entitity Framework - For business logic domain model.
